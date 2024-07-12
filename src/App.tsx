@@ -2,18 +2,18 @@ import { useState } from 'react';
 import './App.css'
 import Header from './components/header/Header';
 import Banner from './components/banner/Banner';
+import Categories from './components/categories/Categories';
+import Product from './components/product/Product';
 
 function App() {
   return (
     <>
-      <header className='fixed w-full z-10 left-0'>
-        <div className='container mx-auto'>
-          <Header />
-        </div>
+      <header className='relative w-full z-10 left-0'>
+        <Header />
       </header>
-      <div className='container mx-auto'>
-        <Banner />
-      </div>
+      <Banner />
+      <Categories />
+      <Product />
     </>
   )
 }

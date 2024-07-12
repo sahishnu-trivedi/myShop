@@ -86,8 +86,19 @@ const IMAGES = {
     arrowSvg: () => <svg width="42" height="31" viewBox="0 0 42 31" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M26.9197 0.103271L41.7228 15.0839L26.9197 30.0646L24.1955 27.3077L34.3543 17.0271H0.109863V13.1286H34.3543L24.1955 2.86015L26.9197 0.103271Z" fill="#FF67A4"/>
     </svg>,
+    heartSvg: () => <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14.5815 0C13.6435 0.0145899 12.7259 0.276433 11.9215 0.759086C11.1171 1.24174 10.4543 1.92811 10 2.74889C9.54572 1.92811 8.8829 1.24174 8.07847 0.759086C7.27405 0.276433 6.35651 0.0145899 5.41852 0C3.92324 0.064966 2.51444 0.719088 1.49991 1.81946C0.485388 2.91983 -0.0524034 4.377 0.00403263 5.87263C0.00403263 11.5162 9.13035 18.0344 9.51853 18.3109L10 18.6516L10.4815 18.3109C10.8696 18.0361 19.996 11.5162 19.996 5.87263C20.0524 4.377 19.5146 2.91983 18.5001 1.81946C17.4856 0.719088 16.0768 0.064966 14.5815 0ZM10 16.6008C7.29026 14.5766 1.67003 9.60363 1.67003 5.87263C1.61308 4.81865 1.97521 3.78491 2.67742 2.99687C3.37964 2.20883 4.36497 1.73043 5.41852 1.66599C6.47206 1.73043 7.45739 2.20883 8.15961 2.99687C10.7673 5.92332 8.956 6.23381 11.8404 2.99687C12.5426 2.20883 13.5279 1.73043 14.5815 1.66599C15.635 1.73043 16.6204 2.20883 17.3226 2.99687C18.0248 3.78491 18.3869 4.81865 18.33 5.87263C18.33 9.60529 12.7097 14.5766 10 16.6008Z" fill="#FF67A4"/>
+    </svg>,
     
-    bannerImg: new URL('./img/home/bannerHome1.jpg', import.meta.url).href
+    bannerImg: new URL('./img/home/bannerHome1.jpg', import.meta.url).href,
+    categoryImg1: new URL('./img/home/category1.png', import.meta.url).href,
+    categoryImg2: new URL('./img/home/category2.png', import.meta.url).href,
+    categoryImg3: new URL('./img/home/category3.png', import.meta.url).href,
+    categoryImg4: new URL('./img/home/category4.png', import.meta.url).href,
+    productImg1: new URL('./img/product/productImg1.jpg', import.meta.url).href,
+    productImg2: new URL('./img/product/productImg2.jpg', import.meta.url).href,
+    productImg3: new URL('./img/product/productImg3.jpg', import.meta.url).href,
+    productImg4: new URL('./img/product/productImg4.jpg', import.meta.url).href,
 }
 
 export default IMAGES;

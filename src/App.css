@@ -15,3 +15,5 @@
 .bannerRightArrowBtn{width: 129px; height: 129px;}
 .logoImg svg{padding: 5px 0;}
 .searchImg:hover svg path{fill: theme('colors.white.DEFAULT');}
+.productImg{height: 400px; width: 100%;}
+.heartIcon:hover svg path{fill: theme('colors.white.DEFAULT');}
