@@ -2,10 +2,10 @@ import IMAGES from '@/assets/Images'
 import React from 'react'
 import Title from '../title/Title'
 
-export default function Categories() {
+export default function Categories({ title }) {
   return (
       <div className='container mx-auto'>
-        <Title titleText= 'Hot Categories' />
+        <Title titleText={title} />
         <div className='grid grid-cols-4'>
             <a href='#'>
                 <img src={IMAGES.categoryImg1} alt='Category1' />

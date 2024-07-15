@@ -8,6 +8,9 @@ export default function Product() {
         <Title titleText= 'Hot Categories' />
         <div className='grid grid-cols-5 gap-10'>
             <ProductList />
+            <ProductList />
+            <ProductList />
+            <ProductList />
         </div>
     </div>    
   )

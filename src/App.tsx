@@ -13,7 +13,8 @@ function App() {
       </header>
       <Banner />
       <Categories />
-      <Product />
+      <Product title='Best Selling T-Shirts for Men' />
+      <Product title='Best Selling Shirts for Men' />
     </>
   )
 }

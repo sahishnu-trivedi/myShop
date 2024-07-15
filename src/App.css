@@ -16,4 +16,5 @@
 .logoImg svg{padding: 5px 0;}
 .searchImg:hover svg path{fill: theme('colors.white.DEFAULT');}
 .productImg{height: 400px; width: 100%;}
-.heartIcon:hover svg path{fill: theme('colors.white.DEFAULT');}
+.heartIcon{color: theme('colors.secondary.DEFAULT'); font-size: 18px;}
+.heartIcon:hover{color: theme('colors.white.DEFAULT');}

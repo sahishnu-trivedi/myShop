@@ -38,9 +38,9 @@ module.exports = {
           DEFAULT: "#FFBBD6",
           foreground: "#FFBBD6",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+        black: {
+          DEFAULT: "#000",
+          foreground: "#000",
         },
         quad: {
           DEFAULT: "#C8F4FA",
@@ -53,6 +53,10 @@ module.exports = {
         borderBlack: {
           DEFAULT: "#222",
           foreground: "#222",
+        },
+        grey: {
+          DEFAULT: "#999999",
+          foreground: "#999999",
         },
       },
       borderRadius: {
