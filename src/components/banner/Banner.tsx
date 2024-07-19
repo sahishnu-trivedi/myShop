@@ -1,5 +1,6 @@
 import React from 'react'
 import IMAGES from '@/assets/Images'
+import RoundArrow from '../roundArrow/RoundArrow'
 
 export default function Banner() {
   return (
@@ -26,10 +27,8 @@ export default function Banner() {
                         </span>
                     </a>
                 </div>
-                <div className='bannerRightArrowBtn absolute bottom-8 right-5 border border-dashed rounded-full w-32 h-32 p-2.5'>
-                    <div className='bg-white rounded-full w-full h-full flex justify-center items-center'>
-                        <IMAGES.arrowSvg />
-                    </div>
+                <div className='absolute bottom-8 right-5'>
+                    <RoundArrow />
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-.headerMain{grid-template-columns: 1fr 7fr 1fr;}
+.headerMain{grid-template-columns: 1fr 5fr 1fr;}
+.headerList{grid-template-columns: repeat(6, 1fr);}
 .headerListItem{margin-right: 10px; text-align: center; text-transform: uppercase;}
 .headerListItem:last-child{margin-right: 0;}
 .headerListItemLink{background: theme('colors.primary.DEFAULT'); color: theme('colors.white.DEFAULT'); display: inline-block; min-width: 10rem; padding: .75rem; border-radius: 100px; border: 2px solid theme('colors.white.DEFAULT');}
@@ -12,9 +13,19 @@
 .bannerOfferText{font-family: "Montserrat", sans-serif;}
 .bannerButton{background: rgba(0, 0, 0, 0.2); font-size: 1.125rem;}
 .redirectIcon svg{display: inline-block; margin-left: 5px;}
-.bannerRightArrowBtn{width: 129px; height: 129px;}
+.bannerRightArrowBtnCircle{background: url(./assets/img/circleDashed.svg) no-repeat center center /cover;}
 .logoImg svg{padding: 5px 0;}
 .searchImg:hover svg path{fill: theme('colors.white.DEFAULT');}
 .productImg{height: 400px; width: 100%;}
 .heartIcon{color: theme('colors.secondary.DEFAULT'); font-size: 18px;}
 .heartIcon:hover{color: theme('colors.white.DEFAULT');}
+.viewMoreMain{background: linear-gradient(to bottom, theme('colors.secondary.DEFAULT') 40%, theme('colors.primary.DEFAULT')) 60%; transition: all 0.5s ease-in-out;}
+.viewMoreMain:hover{background: linear-gradient(to bottom, theme('colors.secondary.DEFAULT') 100%, theme('colors.primary.DEFAULT')) 0%; transition: all 0.5s ease-in-out;}
+.viewMoreMain:hover .bannerRightArrowBtnCircle{transform: rotate(0);}
+
+/* Resposive Start */
+@media(max-width: 1500px){
+    .headerListItem{margin-right: 5px;}
+    .headerIcon {padding: 8px 8px;}
+}
+/* Resposive End */

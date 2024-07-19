@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductList from './ProductList'
 import Title from '../title/Title'
+import ViewMore from '../viewMore/ViewMore'
 
 export default function Product() {
   return (
@@ -11,6 +12,7 @@ export default function Product() {
             <ProductList />
             <ProductList />
             <ProductList />
+            <ViewMore />
         </div>
     </div>    
   )

@@ -7,8 +7,8 @@ export default function ProductList() {
         <div className='relative'>
             <div className='productImg'><img src={IMAGES.productImg1} alt='Product Image' className='w-full rounded-xl h-full object-cover'/></div>
             <a href='#' className='heartIcon w-10 h-10 rounded-xl border border-secondary inline-block flex justify-center items-center bg-white absolute top-4 right-4 hover:bg-secondary hover:border-white'>
-                {/* <IMAGES.heartSvg /> */}
-                <i className="icofont-heart"></i>
+                <IMAGES.heartSvg />
+                {/* <i className="icofont-heart"></i> */}
             </a>
             <div className='grid grid-cols-2 justify-between my-2'>
                 <p className='text-grey'>T-shirt</p>
