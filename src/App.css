@@ -1,14 +1,17 @@
 .headerMain{grid-template-columns: 1fr 5fr 1fr;}
-.headerList{grid-template-columns: repeat(6, 1fr);}
+.headerList{grid-template-columns: repeat(6, 1fr); position: relative;}
+.headerList::before, .headerList::after{--size: 1rem; content: ''; position: absolute; width: 1rem; aspect-ratio: 1; background-image: radial-gradient(circle at 100% 100%, transparent 1rem, white 1rem);}
+.headerList::before{top: 0; left: 0;}
+.headerList::after{top: 0; right: 0; rotate: 90deg;}
 .headerListItem{margin-right: 10px; text-align: center; text-transform: uppercase;}
 .headerListItem:last-child{margin-right: 0;}
 .headerListItemLink{background: theme('colors.primary.DEFAULT'); color: theme('colors.white.DEFAULT'); display: inline-block; min-width: 10rem; padding: .75rem; border-radius: 100px; border: 2px solid theme('colors.white.DEFAULT');}
-.headerListItemLink:hover{background: theme('colors.white.DEFAULT'); color: theme('colors.primary.DEFAULT');}
+.headerListItemLink:hover, .headerListItemLink.active{background: theme('colors.white.DEFAULT'); color: theme('colors.primary.DEFAULT');}
 .headerIcon{border: 1px solid #222; border-radius: 5px; padding: 10px 10px; display: inline-block;}
 .headerIcon:hover{background: theme('colors.borderBlack.DEFAULT');}
 .headerIcon svg{width: 24px; height: 24px;}
 .headerIcon:hover svg path{fill: theme('colors.white.DEFAULT');}
-.bannerBkg{background: url('/src/assets/img/home/bannerHome1.jpg') no-repeat center center /100%; padding: 390px 0;}
+.bannerBkg{background: url('/src/assets/img/home/bannerHome1.jpg') no-repeat center center /100%; padding: 390px 0; border-radius: 30px;}
 .bannerCenterText{width: 382px; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.2);}
 .bannerOfferText{font-family: "Montserrat", sans-serif;}
 .bannerButton{background: rgba(0, 0, 0, 0.2); font-size: 1.125rem;}
@@ -22,6 +25,13 @@
 .viewMoreMain{background: linear-gradient(to bottom, theme('colors.secondary.DEFAULT') 40%, theme('colors.primary.DEFAULT')) 60%; transition: all 0.5s ease-in-out;}
 .viewMoreMain:hover{background: linear-gradient(to bottom, theme('colors.secondary.DEFAULT') 100%, theme('colors.primary.DEFAULT')) 0%; transition: all 0.5s ease-in-out;}
 .viewMoreMain:hover .bannerRightArrowBtnCircle{transform: rotate(0);}
+.scrolled{background: #fff; top: 0; left: 0; box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2)}
+.scrolled .logoImg svg{width: 150px; height: 80px;}
+.scrolled .headerListItemLink{padding: 0.65rem; font-size: 0.85rem; min-width: 9rem;}
+.scrolled .headerListItemLink:hover, .scrolled .headerListItemLink.active{border: 1px solid #57D6E7;}
+.scrolled .headerIcon svg{width: 20px; height: 20px;}
+.scrolled .numberOfItems{width: 1.3rem; height: 1.3rem;}
+.scrolled .searchImg{border: 1px solid #57D6E7; width: 2.3rem; height: 2.3rem; padding: 0.575rem;}
 
 /* Resposive Start */
 @media(max-width: 1500px){

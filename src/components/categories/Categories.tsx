@@ -4,7 +4,7 @@ import Title from '../title/Title'
 
 export default function Categories({ title }) {
   return (
-      <div className='container mx-auto'>
+    <div className='container mx-auto'>
         <Title titleText={title} />
         <div className='grid grid-cols-4 gap-10'>
             <a href='#'>
