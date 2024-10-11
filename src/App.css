@@ -32,6 +32,11 @@
 .scrolled .headerIcon svg{width: 20px; height: 20px;}
 .scrolled .numberOfItems{width: 1.3rem; height: 1.3rem;}
 .scrolled .searchImg{border: 1px solid #57D6E7; width: 2.3rem; height: 2.3rem; padding: 0.575rem;}
+.pinkBtn{background-color: theme('colors.secondary.DEFAULT'); color: #FFF; padding: 5px 10px; border-radius: 10px; display: inline-block;}
+.filter-box{border-bottom: 1px solid theme('colors.grey.DEFAULT'); padding: 20px;}
+.filter-box:last-child{border-bottom: none;}
+.breadcrumb-link{color: theme('colors.grey.DEFAULT');}
+.breadcrumb-link.active-breadcrumb{color: theme('colors.black.DEFAULT');}
 
 /* Resposive Start */
 @media(max-width: 1500px){
