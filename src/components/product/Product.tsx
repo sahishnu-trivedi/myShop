@@ -8,11 +8,11 @@ export default function Product({ title }) {
     <div className='container mx-auto'>
         <Title titleText= {title} />
         <div className='grid grid-cols-5 gap-10'>
-            <ProductList />
-            <ProductList />
-            <ProductList />
-            <ProductList />
-            <ViewMore />
+          <ProductList />
+          <ProductList />
+          <ProductList />
+          <ProductList />
+          <ViewMore />
         </div>
     </div>    
   )

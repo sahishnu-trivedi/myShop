@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Button({useClass, fontSize}) {
+function Button({useClass}) {
   return (
     <a href='#' className={useClass}>Clear All</a>
   )

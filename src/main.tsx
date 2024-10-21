@@ -10,17 +10,7 @@ import ListingPageWomen from './pages/ListingPageWomen.tsx';
 import ListingPageShirts from './pages/ListingPageShirts.tsx';
 import ListingPageTshirts from './pages/ListingPageTshirts.tsx';
 import Accessories from './pages/Accessories.tsx';
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />
-//   },
-//   {
-//     path: "listing",
-//     element: <ListingPage />
-//   },
-// ])
+import ProductDetailPage from './pages/ProductDetailPage.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +21,7 @@ const router = createBrowserRouter(
       <Route path='listingShirts' element={<ListingPageShirts />} />
       <Route path='listingTshirts' element={<ListingPageTshirts />} />
       <Route path='accessories' element={<Accessories />} />
+      <Route path='productDetail' element={<ProductDetailPage />} />
     </Route>
   )
 )

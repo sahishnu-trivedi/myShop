@@ -52,13 +52,13 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+/* button:hover {
   border-color: #646cff;
-}
-button:focus,
+} */
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 p{font-family: "Comfortaa", sans-serif;}
 h1, h2, h3, h4, h5, h6{font-family: "Comfortaa", sans-serif;}

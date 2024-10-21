@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import IMAGES from '@/assets/Images'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useMatch } from 'react-router-dom'
 
 export default function Header() {
   const [scroll, setScroll] = useState(false);
@@ -10,15 +10,20 @@ export default function Header() {
     })
   },[]);
 
+  const location = useLocation();
+
+  const isHomePage = useMatch('/');
+  const headerBackgroundColor = isHomePage ? 'headerBkgWhite homeHeader' : 'headerBkgBlue'
+
   return (
-    <header className={`fixed w-full z-10 left-0 ${scroll ? 'scrolled' : ''}`}>
+    <header className={`fixed w-full z-10 left-0 ${scroll ? 'scrolled' : ''} ${headerBackgroundColor}`}>
       <div className='container mx-auto'>
         <div className='headerMain grid'>
-          <div className='bg-white rounded-br-3xl logoImg'>
+          <div className={`logoBkg rounded-br-3xl logoImg`}>
             {/* <img src={IMAGES.logoImg} alt='logo' className='logo' /> */}
             <IMAGES.logoSvg />
           </div>
-          <ul className='headerList flex justify-center items-center grow relative'>
+          <ul className={`headerList flex justify-center items-center grow relative`}>
             <li className='headerListItem'>
               <NavLink to="/" className={`headerListItemLink ${({ isActive }) => isActive ? "active" : ""}`}>Home</NavLink>
             </li>
@@ -43,19 +48,19 @@ export default function Header() {
               </a>
             </li>
           </ul>
-          <ul className='headerRightMain flex justify-evenly items-center bg-white rounded-bl-3xl'>
+          <ul className={`headerRightMain flex justify-evenly items-center rounded-bl-3xl`}>
             <li className='headerUser'>
-              <a href='#' className='headerIcon'>
+              <a href='#' className='headerIcon bg-white'>
                 <IMAGES.userSvg />
               </a>
             </li>
             <li className='headerfavourite relative'>
-              <a href='#' className='headerIcon'>
+              <a href='#' className='headerIcon bg-white'>
                 <IMAGES.wishListSvg /><span className='numberOfItems bg-secondary rounded-full w-6 h-6 flex justify-center items-center text-white absolute -top-2.5 -right-2.5 text-sm'>5</span>
               </a>
             </li>
             <li className='headerCart relative'>
-              <a href='#' className='headerIcon'>
+              <a href='#' className='headerIcon bg-white'>
                 <IMAGES.cartSvg /><span className='numberOfItems bg-secondary rounded-full w-6 h-6 flex justify-center items-center text-white absolute -top-2.5 -right-2.5 text-sm'>4</span>
               </a>
             </li>
