@@ -47,7 +47,7 @@ export default function ListingPageMen() {
           <div className="col-span-1 rounded-md border border-grey">
             <div className='flex justify-between items-center filter-box'>
               <h6 className='font-bold text-xl'>Filter</h6>
-              <Button useClass='pinkBtn text-sm'/>
+              <Button useClass='pinkBtn text-sm' buttonText='Clear All'/>
             </div>
             <div className='filter-box'>
               <form>

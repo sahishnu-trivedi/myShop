@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Button({useClass}) {
+function Button({useClass, buttonText}) {
   return (
-    <a href='#' className={useClass}>Clear All</a>
+    <a href='#' className={useClass}>{buttonText}</a>
   )
 }
 

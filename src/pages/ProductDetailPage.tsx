@@ -1,4 +1,5 @@
 import IMAGES from '@/assets/Images'
+import Button from '@/components/button/Button'
 import React from 'react'
 
 function ProductDetailPage() {
@@ -43,23 +44,27 @@ function ProductDetailPage() {
             <p className='text-borderBlack mb-8'>White solid casual shirt, has a mandarin collar, a button placket, 1 pocket, long sleeves<br /> with roll-up tab features, curved hem</p>
             <h2 className='text-secondary text-4xl font-bold mb-8'>&#8377; 499 <span className='text-xl text-grey'>MRP <span className='line-through'>1299</span></span> </h2>
             <p className='text-grey text-xl mb-8'>Select size</p>
-            <div className='flex align-center select_time_wrapper'>
-              <label>
-                <input type="radio" name="toggle" className="d-none" />
-                <span className="text-center">M</span>
-              </label>
-              <label>
-                <input type="radio" name="toggle" className="d-none" />
-                <span className="text-center">L</span>
-              </label>
-              <label>
-                <input type="radio" name="toggle" className="d-none" />
-                <span className="text-center">XL</span>
-              </label>
-              <label>
-                <input type="radio" name="toggle" className="d-none" />
-                <span className="text-center">XXL</span>
-              </label>
+            <div className='size-radio-button'>
+              <form className="flex align-center select_time_wrapper boxed">
+                <input type="radio" id="medium" name="skills" value="M" />
+                <label htmlFor="medium">M</label>
+
+                <input type="radio" id="large" name="skills" value="L" />
+                <label htmlFor="large">L</label>
+                
+                <input type="radio" id="xtraLarge" name="skills" value="XL" />
+                <label htmlFor="xtraLarge">XL</label>
+
+                <input type="radio" id="xtraXLarge" name="skills" value="XXL" disabled/>
+                <label htmlFor="xtraXLarge">XXL</label>
+              </form>
+            </div>
+            <div className='mt-8 flex items-center'>
+              <Button useClass='border-secondary border-2 text-secondary py-5 px-24 inline-block rounded-full font-bold text-sm' buttonText='Add to Cart'/>
+              <div className='flex items-center ms-4'>
+                <IMAGES.blueHeartSvg />
+                <Button useClass='text-primary inline-block font-bold text-sm ms-2' buttonText='Add to Wishlist'/>
+              </div>
             </div>
           </div>
         </div>

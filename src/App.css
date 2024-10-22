@@ -47,14 +47,15 @@ body[data-scroll-locked] {min-width: 100%;}
 .breadcrumb-link{color: theme('colors.grey.DEFAULT');}
 .breadcrumb-link.active-breadcrumb{color: theme('colors.black.DEFAULT');}
 .productDetailImgBlock{height: 500px;}
-.select_time_wrapper label {margin-right:7px; color: theme('colors.borderBlack.DEFAULT'); }
-.select_time_wrapper label span {font-size: 20px; font-weight: 600; border: 1px solid theme('colors.borderBlack.DEFAULT'); display: inline-block; width: 80px; height: 80px; border-radius: 10px; display: flex; justify-content: center; align-items: center;}
-/* .select_time_wrapper label input {position:absolute; top:-20px;} */
-.select_time_wrapper  input:checked + span {background: theme('colors.borderBlack.DEFAULT'); color: theme('colors.white.DEFAULT');}
-.label_p{font-weight:400;}
-.custom-control-label::after{border-radius: 50%!important; width: 24px; height: 24px; top: 0px; color: transparent;}
-.form_bot_wrapper .custom-control-label::before{background-color: #ebebeb; height: 24px; width: 24px; border-radius: 50%; top: 0;}
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before{background-color: #ebebeb;}
+.size-radio-button input[type="radio"] {display:none;}
+.size-radio-button label{margin-right: 8px; width: 80px; height: 80px; border-radius: 10px; border: 1px solid theme('colors.borderBlack.DEFAULT'); cursor: pointer; display: flex; justify-content: center; align-items: center;}
+.size-radio-button [type="radio"]:checked + label, .size-radio-button [type="radio"]:not(:checked) + label{padding-left: 0; color: theme('colors.borderBlack.DEFAULT');}
+.size-radio-button .blank-label {display: none;}
+.size-radio-button input[type="radio"]:checked + label {background: theme('colors.black.DEFAULT'); color: theme('colors.white.DEFAULT');}
+.size-radio-button [type="radio"]:checked + label:before, .size-radio-button [type="radio"]:not(:checked) + label:before{display: none;}
+.size-radio-button [type="radio"]:checked + label, .size-radio-button [type="radio"]:not(:checked) + label{display: flex;}
+.size-radio-button [type="radio"]:checked + label:after{display: none;}
+.size-radio-button [type="radio"]:disabled + label{border: 1px solid #CDCDCD; color: #CDCDCD;}
 
 /* Resposive Start */
 @media(max-width: 1500px){
