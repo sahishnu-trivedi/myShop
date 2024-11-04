@@ -93,6 +93,10 @@ const IMAGES = {
     blueHeartSvg: () => <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M9.12132 3.27765L10 4.89485L10.8787 3.27765C11.2498 2.59453 11.7901 2.02559 12.443 1.62651C13.0872 1.23277 13.8193 1.0176 14.5674 1.00045C15.7816 1.06223 16.9282 1.60696 17.7587 2.52449C18.5965 3.45023 19.0435 4.6799 18.9967 5.9453L18.996 5.9638V5.98231C18.996 7.16532 18.5214 8.47593 17.7065 9.83341C16.8977 11.1809 15.7998 12.498 14.6648 13.674C12.6074 15.8055 10.5057 17.3937 10.0002 17.7662C9.49029 17.3899 7.39065 15.8026 5.33519 13.6733C4.20011 12.4975 3.1023 11.1805 2.29346 9.83313C1.47864 8.47581 1.00403 7.1653 1.00403 5.98231V5.9638L1.00335 5.9453C0.956474 4.6799 1.40346 3.45023 2.24133 2.52449C3.07177 1.60696 4.21838 1.06223 5.43261 1.00045C6.18065 1.0176 6.91277 1.23277 7.55696 1.62651C8.2099 2.02559 8.75016 2.59453 9.12132 3.27765Z" fill="white" stroke="#57D6E7" stroke-width="2"/>
     </svg>,
+    passwordEyeSvg: () => <svg width="34" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 12.0699C1.16322 8.11501 6.03006 0.205322 16.1917 0.205322C26.3532 0.205322 31.7783 8.11501 33.2207 12.0699C31.7784 15.9782 26.3533 23.7949 16.1917 23.7949C6.03001 23.7949 1.1632 15.9782 0 12.0699ZM16.611 19.0184C20.4872 19.0184 23.6295 15.8762 23.6295 12C23.6295 8.12386 20.4872 4.9816 16.611 4.9816C12.7349 4.9816 9.59262 8.12386 9.59262 12C9.59262 15.8762 12.7349 19.0184 16.611 19.0184Z" fill="#999999"/>
+    <circle cx="16.6105" cy="12.0001" r="3.76875" fill="#999999"/>
+    </svg>,
     
     bannerImg: new URL('./img/home/bannerHome1.jpg', import.meta.url).href,
     categoryImg1: new URL('./img/home/category1.png', import.meta.url).href,
@@ -103,6 +107,7 @@ const IMAGES = {
     productImg2: new URL('./img/product/productImg2.jpg', import.meta.url).href,
     productImg3: new URL('./img/product/productImg3.jpg', import.meta.url).href,
     productImg4: new URL('./img/product/productImg4.jpg', import.meta.url).href,
+    loginImg: new URL('./img/login/loginImg.png', import.meta.url).href,
 }
 
 export default IMAGES;

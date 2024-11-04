@@ -56,6 +56,7 @@ body[data-scroll-locked] {min-width: 100%;}
 .size-radio-button [type="radio"]:checked + label, .size-radio-button [type="radio"]:not(:checked) + label{display: flex;}
 .size-radio-button [type="radio"]:checked + label:after{display: none;}
 .size-radio-button [type="radio"]:disabled + label{border: 1px solid #CDCDCD; color: #CDCDCD;}
+.login-logo-block svg{display: inline-block;}
 
 /* Resposive Start */
 @media(max-width: 1500px){

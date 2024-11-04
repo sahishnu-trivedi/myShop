@@ -13,10 +13,14 @@ export default function Header() {
   const location = useLocation();
 
   const isHomePage = useMatch('/');
-  const headerBackgroundColor = isHomePage ? 'headerBkgWhite homeHeader' : 'headerBkgBlue'
+  const isLoginPage = useMatch('login')
+  const isSignupPage = useMatch('signup')
+  // const headerBackgroundColor = isHomePage ? 'headerBkgWhite homeHeader' : 'headerBkgBlue'
+  // const removeHeader = isLoginPage ? 'hidden' : 'headerBkgWhite homeHeader'
+  const headerClass = isHomePage ? 'headerBkgWhite homeHeader' : isLoginPage ? 'hidden' : isSignupPage ? 'hidden' : 'headerBkgBlue'
 
   return (
-    <header className={`fixed w-full z-10 left-0 ${scroll ? 'scrolled' : ''} ${headerBackgroundColor}`}>
+    <header className={`fixed w-full z-10 left-0 ${scroll ? 'scrolled' : ''} ${headerClass}`}>
       <div className='container mx-auto'>
         <div className='headerMain grid'>
           <div className={`logoBkg rounded-br-3xl logoImg`}>
