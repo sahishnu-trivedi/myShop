@@ -1,6 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import IMAGES from '@/assets/Images'
-import { NavLink, useLocation, useMatch } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import IMAGES from '@/assets/Images';
+import { Link, NavLink, useLocation, useMatch } from 'react-router-dom';
+import {useKindeAuth} from '@kinde-oss/kinde-auth-react';
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [scroll, setScroll] = useState(false);
@@ -10,14 +20,24 @@ export default function Header() {
     })
   },[]);
 
-  const location = useLocation();
-
   const isHomePage = useMatch('/');
   const isLoginPage = useMatch('login')
   const isSignupPage = useMatch('signup')
-  // const headerBackgroundColor = isHomePage ? 'headerBkgWhite homeHeader' : 'headerBkgBlue'
-  // const removeHeader = isLoginPage ? 'hidden' : 'headerBkgWhite homeHeader'
-  const headerClass = isHomePage ? 'headerBkgWhite homeHeader' : isLoginPage ? 'hidden' : isSignupPage ? 'hidden' : 'headerBkgBlue'
+  const { login, register, user, isAuthenticated, logout } = useKindeAuth();
+
+  const headerClass = isHomePage ? 'headerBkgWhite homeHeader' : isLoginPage ? 'hidden' : isSignupPage ? 'hidden' : 'headerBkgBlue';
+
+  const handleLogin = () => {
+    login();
+  };
+
+  const handleRegister = () => {
+    register();
+  };
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <header className={`fixed w-full z-10 left-0 ${scroll ? 'scrolled' : ''} ${headerClass}`}>
@@ -53,11 +73,40 @@ export default function Header() {
             </li>
           </ul>
           <ul className={`headerRightMain flex justify-evenly items-center rounded-bl-3xl`}>
-            <li className='headerUser'>
-              <a href='#' className='headerIcon bg-white'>
-                <IMAGES.userSvg />
-              </a>
+            {isAuthenticated 
+              ? <li className='headerUser'>
+              <DropdownMenu>
+                <DropdownMenuTrigger className='headerIcon bg-white'>
+                  <IMAGES.userSvg />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className='bg-white'>
+                  {/* <DropdownMenuLabel></DropdownMenuLabel> */}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>{user?.email}</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link to='' onClick={handleLogout}>Log out</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </li>
+            : <li className='headerUser'>
+            <DropdownMenu>
+              <DropdownMenuTrigger className='headerIcon bg-white'>
+                <IMAGES.userSvg />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className='bg-white'>
+                {/* <DropdownMenuLabel></DropdownMenuLabel> */}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to='' onClick={handleLogin}>Login</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to='' onClick={handleRegister}>Sign up</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </li>
+            }
             <li className='headerfavourite relative'>
               <a href='#' className='headerIcon bg-white'>
                 <IMAGES.wishListSvg /><span className='numberOfItems bg-secondary rounded-full w-6 h-6 flex justify-center items-center text-white absolute -top-2.5 -right-2.5 text-sm'>5</span>

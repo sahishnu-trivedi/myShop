@@ -10,7 +10,7 @@ body[data-scroll-locked] {min-width: 100%;}
 .headerListItem:last-child{margin-right: 0;}
 .headerListItemLink{background: theme('colors.primary.DEFAULT'); color: theme('colors.white.DEFAULT'); display: inline-block; min-width: 10rem; padding: .75rem; border-radius: 100px; border: 2px solid theme('colors.white.DEFAULT');}
 .headerListItemLink:hover, .headerListItemLink.active{background: theme('colors.white.DEFAULT'); color: theme('colors.primary.DEFAULT');}
-.headerIcon{border: 1px solid #222; border-radius: 5px; padding: 10px 10px; display: inline-block;}
+.headerIcon{border: 1px solid #222; border-radius: 5px; padding: 10px 10px; display: flex;}
 .headerIcon:hover{background: theme('colors.borderBlack.DEFAULT');}
 .headerIcon svg{width: 24px; height: 24px;}
 .headerIcon:hover svg path{fill: theme('colors.white.DEFAULT');}
