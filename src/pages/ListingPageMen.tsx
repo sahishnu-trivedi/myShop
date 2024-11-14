@@ -119,10 +119,6 @@ export default function ListingPageMen() {
             </div>
             <div className='grid grid-cols-5 gap-10 mt-7'>
               <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
-              <ProductList />
             </div>
           </div>
         </div>

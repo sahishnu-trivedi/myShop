@@ -2,7 +2,8 @@ import './App.css'
 import Header from './components/header/Header';
 import { Outlet } from 'react-router-dom';
 import {KindeProvider} from "@kinde-oss/kinde-auth-react";
-import { env } from 'process';
+// import { env } from 'process';
+// import { useState } from 'react';
 
 function App() {
   return (
