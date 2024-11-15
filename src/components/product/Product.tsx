@@ -9,9 +9,6 @@ export default function Product({ title }) {
         <Title titleText= {title} />
         <div className='grid grid-cols-5 gap-10'>
           <ProductList />
-          <ProductList />
-          <ProductList />
-          <ProductList />
           <ViewMore />
         </div>
     </div>    

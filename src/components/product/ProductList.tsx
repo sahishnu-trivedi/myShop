@@ -1,43 +1,14 @@
 import IMAGES from '@/assets/Images'
 // import ProductDetailPage from '@/pages/ProductDetailPage'
 import { Link } from 'react-router-dom'
-import clients from '@/lib/clients'
 import { useEffect, useState } from 'react'
-import { PortableText } from '@portabletext/react'
+import { PortableText } from '@portabletext/react' // For when adding product Description
 
-export default function ProductList() {
-  const [allProducts, setAllProducts] = useState([])
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const query = `*[_type == "productType"]{
-        name,
-        slug,
-        "imageUrl": image.asset->url,
-        description,
-        discountedprice,
-        actualprice,
-        category[]->{
-          title
-        }
-      }`;
-
-      try {
-        const result = await clients.fetch(query);
-        setAllProducts(result);
-        console.log(result)
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
+export default function ProductList({products}) {
   return (
     <>
-      {allProducts.length > 0 ? (
-        allProducts.map((product) => (
+      {products.length > 0 ? (
+        products.map((product) => (
           <div key={product.slug.current}>
             <Link to="/productDetail" className='productBlock'>
               <div className='relative'>

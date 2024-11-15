@@ -10,31 +10,83 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import clients from '@/lib/clients'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function ListingPageMen() {
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState('all');
   const [checkBoxCategory, setcheckBoxCategory] = useState<string[]>([]);
   const [selectedValue, setSelectedValue] = useState("What's New");
+  const [allProducts, setAllProducts] = useState([])
+  const [filteredProducts, setFilteredProducts] = useState([])
+
+  // Fetching All Products from Sanity
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const query = `*[_type == "productType"]{
+        name,
+        slug,
+        "imageUrl": image.asset->url,
+        description,
+        discountedprice,
+        actualprice,
+        category[]->{
+          title
+        }
+      }`;
+
+      try {
+        const result = await clients.fetch(query);
+        console.log({result})
+        setAllProducts(result);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  // Fetching All Products from Sanity
+
+  // Fetching filtered products
+  useEffect(() => {
+    const fetchFilteredProducts = async () => {
+      const query = `*[_type == "productType" && "Shirts" in category[]->title]{
+        name,
+        slug,
+        "imageUrl": image.asset->url,
+        description,
+        discountedprice,
+        actualprice,
+        category[]->{
+          title
+        }
+      }`;
+
+      try {
+        const result = await clients.fetch(query);
+        console.log({result})
+        setFilteredProducts(result);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchFilteredProducts();
+  }, []);
+  // Fetching filtered products
 
   const onOptionChange = (e:any) => {
     setCategory(e.target.value)
   }
 
-  const onCheckChangeHandler = (e) => {
+  const onCheckChangeHandler = (e:any) => {
     const checkboxCategoryValue = e.target.value;
 
     checkBoxCategory.includes(checkboxCategoryValue)
     ? setcheckBoxCategory([...checkBoxCategory.filter((category) => category !== checkboxCategoryValue)])
     : setcheckBoxCategory([...checkBoxCategory, checkboxCategoryValue])
-    
-    // const checkedValue = e.target.value
-    // if(checkBoxCategory.includes(checkedValue)) {
-    //   setcheckBoxCategory([...checkBoxCategory.filter((category) => category !== checkedValue)])
-    // } else {
-    //   setcheckBoxCategory([...checkBoxCategory, checkedValue])
-    // }
   }
 
   const dropdownHandler = (value) => {
@@ -118,7 +170,7 @@ export default function ListingPageMen() {
               </div>
             </div>
             <div className='grid grid-cols-5 gap-10 mt-7'>
-              <ProductList />
+              <ProductList products={allProducts}/>
             </div>
           </div>
         </div>

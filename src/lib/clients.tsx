@@ -1,9 +1,10 @@
 import { createClient } from "@sanity/client";
+import { env } from "process";
 
 const clients = createClient({
-    projectId: '0sqgeum8',
-    dataset: 'oozywoozy',
-    apiVersion: '2024-11-12',
+    projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+    dataset: import.meta.env.VITE_SANITY_DATASET,
+    apiVersion: import.meta.env.VITE_SANITY_API_VERSION,
     useCdn: true,
 })
 
