@@ -1,16 +1,24 @@
 import IMAGES from '@/assets/Images'
 // import ProductDetailPage from '@/pages/ProductDetailPage'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { PortableText } from '@portabletext/react' // For when adding product Description
 
-export default function ProductList({products}) {
+export default function ProductList({selectedFilter, setLimit}) {
+  
+
+  // const filteredProductsList = selectedFilter ? selectedFilter.toString() : "";
+  // console.log('filteredProductsList : ', filteredProductsList);
+
+  console.log("selectedFilter : ", selectedFilter)
+  const limitedProducts = setLimit ? selectedFilter.slice(0, setLimit) : selectedFilter;
+  console.log("limitedProducts : ", limitedProducts)
+
   return (
     <>
-      {products.length > 0 ? (
-        products.map((product) => (
+      {limitedProducts ? (
+        limitedProducts.map((product) => (
           <div key={product.slug.current}>
-            <Link to="/productDetail" className='productBlock'>
+            <Link to={`/productDetail/${product.slug.current}`} className='productBlock'>
               <div className='relative'>
                   {product.imageUrl &&
                     <div className='productImg'><img src={product.imageUrl} alt={product.name} className='w-full rounded-xl h-full object-cover'/></div>
@@ -38,7 +46,7 @@ export default function ProductList({products}) {
                   <h2 className='mb-2 text-black font-bold text-lg'>{product.name}</h2>
                   <div className='flex items-center font-bold'>
                     <h3 className='text-black text-lg mr-2'>&#8377; {product.discountedprice}</h3>
-                    <p className='text-secondary text-base'><span className='line-through'>&#8377; {product.actualprice}</span> (59&#x25; off)</p>
+                    <p className='text-secondary text-base'><span className='line-through'>&#8377; {product.actualprice}</span> ({Math.round(((product.actualprice - product.discountedprice) / product.actualprice) * 100)}% off)</p>
                   </div>
               </div>
             </Link>
