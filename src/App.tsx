@@ -2,6 +2,7 @@ import './App.css'
 import Header from './components/header/Header';
 import { Outlet } from 'react-router-dom';
 import {KindeProvider} from "@kinde-oss/kinde-auth-react";
+import Footer from './components/footer/Footer';
 // import { env } from 'process';
 // import { useState } from 'react';
 
@@ -15,6 +16,7 @@ function App() {
     >
       <Header />
       <Outlet />
+      <Footer />
     </KindeProvider>
   )
 }

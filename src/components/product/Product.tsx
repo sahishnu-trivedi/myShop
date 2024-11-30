@@ -4,21 +4,21 @@ import Title from '../title/Title'
 import ViewMore from '../viewMore/ViewMore'
 import clients from '@/lib/clients'
 
-export default function Product({ title }) {
+export default function Product({ title, bestSellingProduct }) {
   const [allProducts, setAllProducts] = useState([])
-
+  
   useEffect(() => {
     const fetchProducts = async () => {
-      const query = `*[_type == "productType"]{
+      const query = `*[_type == "productType" && "${bestSellingProduct}" in category[] -> title ]{
         name,
         slug,
         "imageUrl": image.asset->url,
         description,
         discountedprice,
-        "detailPageImageUrl1": image.asset->url,
-        "detailPageImageUrl2": image.asset->url,
-        "detailPageImageUrl3": image.asset->url,
-        "detailPageImageUrl4": image.asset->url,
+        images[]{
+          "url": asset->url,
+          alt
+        },
         actualprice,
         gender,
         category[]->{
@@ -28,7 +28,8 @@ export default function Product({ title }) {
 
       try {
         const result = await clients.fetch(query);
-        console.log({result})
+        console.log('homepage query', query)
+        console.log('homepage result', allProducts)
         setAllProducts(result);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -36,7 +37,7 @@ export default function Product({ title }) {
     };
 
     fetchProducts();
-  }, []);
+  }, [bestSellingProduct]);
 
   return (
     <div className='container mx-auto'>

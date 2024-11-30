@@ -7,8 +7,8 @@ export default function Home() {
     <>
       <Banner />
       <Categories title='Hot Categories' />
-      <Product title='Best Selling T-Shirts for Men' />
-      <Product title='Best Selling Shirts for Men' />
+      <Product title='Best Selling T-Shirts for Men' bestSellingProduct='tshirt' />
+      <Product title='Best Selling Shirts for Men' bestSellingProduct='Shirts' />
     </>
   )
 }

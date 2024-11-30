@@ -44,7 +44,6 @@ export default function ListingPageMen() {
 
       try {
         const result = await clients.fetch(query);
-        console.log({result})
         setAllProducts(result);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -68,10 +67,10 @@ export default function ListingPageMen() {
         "imageUrl": image.asset->url,
         description,
         discountedprice,
-        "detailPageImageUrl1": image.asset->url,
-        "detailPageImageUrl2": image.asset->url,
-        "detailPageImageUrl3": image.asset->url,
-        "detailPageImageUrl4": image.asset->url,
+        images[]{
+          "url": asset->url,
+          alt
+        },
         actualprice,
         gender,
         category[]->{
@@ -81,8 +80,6 @@ export default function ListingPageMen() {
 
       try {
         const result = await clients.fetch(query);
-        console.log('FilteredProducts : ', {result})
-        console.log('query : ', query)
         setFilteredProducts(result);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -185,7 +182,7 @@ export default function ListingPageMen() {
               </Select>
             </div>
           </div>
-          <div className='grid grid-cols-5 gap-10 mt-7'>
+          <div className='grid grid-cols-5 md:grid-cols-4 gap-10 mt-7'>
             {checkBoxCategory.length == 0 ? <ProductList selectedFilter={allProducts} setLimit={0}  /> : <ProductList selectedFilter={filteredProducts} setLimit={0}  />}
           </div>
         </div>
