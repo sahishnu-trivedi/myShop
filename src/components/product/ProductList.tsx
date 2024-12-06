@@ -5,13 +5,7 @@ import { PortableText } from '@portabletext/react' // For when adding product De
 
 export default function ProductList({selectedFilter, setLimit}) {
   
-
-  // const filteredProductsList = selectedFilter ? selectedFilter.toString() : "";
-  // console.log('filteredProductsList : ', filteredProductsList);
-
-  console.log("selectedFilter : ", selectedFilter)
   const limitedProducts = setLimit ? selectedFilter.slice(0, setLimit) : selectedFilter;
-  console.log("limitedProducts : ", limitedProducts)
 
   return (
     <>

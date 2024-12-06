@@ -14,6 +14,7 @@ export default function Product({ title, bestSellingProduct }) {
         slug,
         "imageUrl": image.asset->url,
         description,
+        quantity,
         discountedprice,
         images[]{
           "url": asset->url,

@@ -11,8 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useSelector } from 'react-redux';
 
 export default function Header() {
+
+  const productTotalQuantity = useSelector((state) => state.allCart.totalQuantity)
+
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -113,9 +117,9 @@ export default function Header() {
               </a>
             </li>
             <li className='headerCart relative'>
-              <a href='#' className='headerIcon bg-white'>
-                <IMAGES.cartSvg /><span className='numberOfItems bg-secondary rounded-full w-6 h-6 flex justify-center items-center text-white absolute -top-2.5 -right-2.5 text-sm'>4</span>
-              </a>
+              <Link to='cart' className='headerIcon bg-white'>
+                <IMAGES.cartSvg /><span className='numberOfItems bg-secondary rounded-full w-6 h-6 flex justify-center items-center text-white absolute -top-2.5 -right-2.5 text-sm'>{productTotalQuantity}</span>
+              </Link>
             </li>
           </ul>
         </div>

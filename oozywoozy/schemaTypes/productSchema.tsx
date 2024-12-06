@@ -25,6 +25,12 @@ export const productSchema = defineType({
             }
         }),
         defineField({
+            name: 'quantity',
+            title: 'quantity',
+            type: 'number',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: 'image',
             title: 'Product Image',
             type: 'image',
@@ -48,38 +54,6 @@ export const productSchema = defineType({
                 options: { hotspot: true },
             }]
         }),
-        // defineField({
-        //     name: 'detailPageImage1',
-        //     title: 'Product Image1',
-        //     type: 'image',
-        //     options: {
-        //         hotspot: true,
-        //     }
-        // }),
-        // defineField({
-        //     name: 'detailPageImage2',
-        //     title: 'Product Image2',
-        //     type: 'image',
-        //     options: {
-        //         hotspot: true,
-        //     }
-        // }),
-        // defineField({
-        //     name: 'detailPageImage3',
-        //     title: 'Product Image3',
-        //     type: 'image',
-        //     options: {
-        //         hotspot: true,
-        //     }
-        // }),
-        // defineField({
-        //     name: 'detailPageImage4',
-        //     title: 'Product Image4',
-        //     type: 'image',
-        //     options: {
-        //         hotspot: true,
-        //     }
-        // }),
         defineField({
             name: 'description',
             title: 'Description',

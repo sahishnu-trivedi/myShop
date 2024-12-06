@@ -4,7 +4,7 @@ import Button from '../button/Button'
 
 function Footer() {
   return (
-    <footer className='footer-main'>
+    <footer className='footer-main mt-44'>
         <div className='footer-bg py-14'>
             <div className='container mx-auto'>
                 <div className='grid grid-cols-5'>

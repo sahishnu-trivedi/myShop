@@ -30,11 +30,12 @@ export default function ListingPageMen() {
         slug,
         "imageUrl": image.asset->url,
         description,
+        quantity,
         discountedprice,
-        "detailPageImageUrl1": image.asset->url,
-        "detailPageImageUrl2": image.asset->url,
-        "detailPageImageUrl3": image.asset->url,
-        "detailPageImageUrl4": image.asset->url,
+        images[]{
+          "url": asset->url,
+          alt
+        },
         actualprice,
         gender,
         category[]->{
@@ -66,6 +67,7 @@ export default function ListingPageMen() {
         slug,
         "imageUrl": image.asset->url,
         description,
+        quantity,
         discountedprice,
         images[]{
           "url": asset->url,

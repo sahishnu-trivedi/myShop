@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PortableText } from '@portabletext/react' // For when adding product Description
 import { log } from 'console';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/features/CartProductSlice';
 
 function ProductDetailPage() {
 
@@ -19,6 +21,7 @@ function ProductDetailPage() {
         slug,
         "imageUrl": image.asset->url,
         description,
+        quantity,
         discountedprice,
         images[]{
           "url": asset->url,
@@ -34,7 +37,7 @@ function ProductDetailPage() {
       try {
         const result = await clients.fetch(query);
         setAllProducts(result);
-        console.log('allProducts', result)
+        console.log(result)
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -43,6 +46,8 @@ function ProductDetailPage() {
     fetchProducts();
   }, [slug]);
   // Fetching All Products from Sanity
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -112,7 +117,8 @@ function ProductDetailPage() {
                 </form>
               </div>
               <div className='mt-8 flex items-center'>
-                <Button useClass='border-secondary border-2 text-secondary py-5 px-24 inline-block rounded-full font-bold text-sm' buttonText='Add to Cart'/>
+                {/* <Button useClass='border-secondary border-2 text-secondary py-5 px-24 inline-block rounded-full font-bold text-sm' buttonText='Add to Cart'/> */}
+                <a href='#' className='border-secondary border-2 text-secondary py-5 px-24 inline-block rounded-full font-bold text-sm' onClick={() => dispatch(addToCart(allProducts[0]))}>Add to Cart</a>
                 <div className='flex items-center ms-4'>
                   <IMAGES.blueHeartSvg />
                   <Button useClass='text-primary inline-block font-bold text-sm ms-2' buttonText='Add to Wishlist'/>
