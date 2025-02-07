@@ -61,6 +61,8 @@ body[data-scroll-locked] {min-width: 100%;}
 .selected-product-color.selected{box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4); border: 3px solid theme('colors.white.DEFAULT');}
 .selected-product-color.disabled{opacity: 0.5; pointer-events: none;}
 .footer-bg{background: #efefef;}
+.horizontal-line::before, .horizontal-line::after{content: ''; position: absolute; left: 0; top: 0; width: 5px; height: 5px; border-radius: 100%; background: #000; transform: translateY(-50%);}
+.horizontal-line::after{left: inherit; right: 0;}
 
 /* Resposive Start */
 @media(max-width: 1500px){
