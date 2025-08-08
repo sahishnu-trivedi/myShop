@@ -56,7 +56,6 @@ export default function ListingPageMen() {
   // Fetching All Products from Sanity
 
   const checkBoxCategoryValue = checkBoxCategory.toString().split(",");
-  console.log('checkBoxCategoryValue : ', checkBoxCategoryValue)
 
   // Fetching filtered products
   useEffect(() => {

@@ -6,7 +6,10 @@ import Footer from './components/footer/Footer';
 // import { env } from 'process';
 // import { useState } from 'react';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import { store
+
+  
+ } from './store/store.tsx';
 
 function App() {
   return (

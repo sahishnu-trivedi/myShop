@@ -10,18 +10,27 @@ export const cartProductSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            const cartProducts = state.cart.find((cartProduct) => (cartProduct.slug.current === action.payload.slug.current));
+            const cartProducts = state.cart.find((cartProduct) => (cartProduct === action.payload));
+            console.log('action.payload : ', action.payload);
+            // state.quantity.push(action.payload)
+            console.log('cartProducts from slice add : ', cartProducts);
             if(cartProducts){
-                console.log('inside If')
-                cartProducts.quantity += 1;
+                cartProducts.quantity += action.payload.quantity;
+                console.log('cartProducts.quantity : ', cartProducts.quantity);
             }
             else{
                 state.cart.push(action.payload)
             }
         },
-        // removeFromCart: (state, action) => {}
+        removeFromCart: (state, action) => {
+            const cartProducts = state.cart.find((cartProduct) => (cartProduct.slug === action.payload));
+            console.log('cartProducts from slice : ', cartProducts);
+            if(cartProducts){
+                state.cart = state.cart.filter((cartProduct) => (cartProduct.slug !== action.payload));
+            }
+        }
     }
 })
 
-export const {addToCart} = cartProductSlice.actions;
+export const { addToCart, removeFromCart } = cartProductSlice.actions;
 export default cartProductSlice.reducer;

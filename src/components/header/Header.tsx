@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux';
 
 export default function Header() {
 
-  const productTotalQuantity = useSelector((state) => state.allCart.totalQuantity)
+  const productTotalQuantity = useSelector((state) => state.allCart.quantity)
 
   const [scroll, setScroll] = useState(false);
   useEffect(() => {

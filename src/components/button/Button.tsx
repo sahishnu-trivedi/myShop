@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Button({useClass, buttonText}) {
+function Button({useClass, buttonText, onClickHandler}) {
   return (
-    <a href='#' className={useClass}>{buttonText}</a>
+    <a href='#' className={useClass} onClick={onClickHandler ? onClickHandler : ""}>{buttonText}</a>
   )
 }
 

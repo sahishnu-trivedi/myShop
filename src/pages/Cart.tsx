@@ -1,6 +1,6 @@
 import IMAGES from '@/assets/Images';
 import Button from '@/components/button/Button';
-import { addToCart } from '@/features/CartProductSlice';
+import { addToCart, removeFromCart } from '@/features/CartProductSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -16,15 +16,31 @@ import { PortableText } from '@portabletext/react';
 
 function Cart() {
   const cartProducts = useSelector((state) => state.allCart.cart)
-  const quantity = useSelector((state) => state.allCart.quantity)
+  // const quantity = useSelector((state) => state.allCart.quantity)
+  
   const dispatch = useDispatch()
   
-  console.log('quantity : ', quantity)
   console.log('cartProducts : ', cartProducts);
 
   const handleIncrementClick = (addProduct) => {
-    dispatch(addToCart(addProduct))
+    // dispatch(addToCart(cartProducts.slug.current, {quantity: addProduct} ));
+    dispatch(addToCart({...addProduct}));
+    
+    console.log('handleIncrementClick addProduct : ', addProduct)
   }
+  const handleDecrementClick = (removeProduct) => {
+    console.log('handleDecrementClick');
+    console.log('cartProducts slice : ', cartProducts);
+    dispatch(removeFromCart(cartProducts.slug.current, {quantity: removeProduct} ));
+  }
+
+  const totalPrice = () => {
+    return (
+      cartProducts.map((cartPrice) => console.log('totalPrice cartPrice : ', cartPrice))
+    )
+  }
+
+  console.log('totalPrice : ', totalPrice());
 
   return (
     <div className='container mx-auto pt-48'>
@@ -45,11 +61,11 @@ function Cart() {
             <h6 className='mb-0 mt-10 text-2xl font-bold'>Divya Patel - 390019</h6>
             <p className='mb-0 mt-3 text-xl'>D-116, Vallabh Vihar-B, Nr. Mahavir Hall, Ajwa Road, Vadodara, Gujarat, 390019.</p>
           </div>
-          <h6 className='my-10 text-2xl text-secondary font-bold'>Cart <span className='text-black'>(3 items)</span></h6>
+          <h6 className='my-10 text-2xl text-secondary font-bold'>Cart <span className='text-black'>({cartProducts ? cartProducts.length : 0} items)</span></h6>
           {
             cartProducts ?
             cartProducts.map((cartProduct) => (
-              <div  key={cartProduct.slug.current} className='border border-grey rounded-3xl p-8 mt-5'>
+              <div  key={cartProduct.slug} className='border border-grey rounded-3xl p-8 mt-5'>
                 <div className='flex items-center w-full'>
                   <div className='w-36 h-36 rounded-xl bg-quad'>
                   {cartProduct.imageUrl &&
@@ -59,7 +75,8 @@ function Cart() {
                   <div className='flex-1 ms-7'>
                     <div className='flex justify-between items-cente mb-2'>
                       <h5 className='mb-0 text-black text-2xl font-bold'>{cartProduct.name}</h5>
-                      <Button useClass='pinkBtn text-sm px-5 py-2' buttonText={<IMAGES.deleteSvg />}/>
+                      {/* <Button useClass='pinkBtn text-sm px-5 py-2' onClickHandler={handleDecrementClick} buttonText={<IMAGES.deleteSvg />}/> */}
+                      <a href='#' className='pinkBtn text-sm px-5 py-2' onClick={handleDecrementClick}>{<IMAGES.deleteSvg />}</a>
                     </div>
                     {/* <p className='text-sm mt-2'>Slim fit - long sleeve</p> */}
                     <div>
@@ -72,7 +89,7 @@ function Cart() {
                         <SelectTrigger className="bg-primary text-white px-2">
                           <SelectValue placeholder="Size: 42" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className='bg-white'>
                           <SelectGroup>
                             <SelectLabel>Size: 42</SelectLabel>
                             <SelectItem value="size:44">Size: 32</SelectItem>
@@ -83,18 +100,19 @@ function Cart() {
                           </SelectGroup>
                         </SelectContent>
                       </Select>
-                      <Select>
+                      <Select onValueChange={handleIncrementClick}>
                         <SelectTrigger className="bg-primary text-white px-2 ms-3">
                           <SelectValue placeholder="Qty: 1" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className='bg-white'>
                           <SelectGroup>
                             <SelectLabel>Qty: 1</SelectLabel>
-                            <SelectItem value="size:44">Qty: 2</SelectItem>
-                            <SelectItem value="banana">Qty: 3</SelectItem>
-                            <SelectItem value="blueberry">Qty: 4</SelectItem>
-                            <SelectItem value="grapes">Qty: 5</SelectItem>
-                            <SelectItem value="pineapple">Qty: 6</SelectItem>
+                            <SelectItem value="1">Qty: 1</SelectItem>
+                            <SelectItem value="2">Qty: 2</SelectItem>
+                            <SelectItem value="3">Qty: 3</SelectItem>
+                            <SelectItem value="4">Qty: 4</SelectItem>
+                            <SelectItem value="5">Qty: 5</SelectItem>
+                            <SelectItem value="6">Qty: 6</SelectItem>
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -112,10 +130,57 @@ function Cart() {
             ))
             : <p>The Cart is empty</p>
           }
-          
+          <div className='grid grid-cols-3 gap-10 mt-16'>
+            <div className='text-center'> 
+              <div className='w-40 h-40 shadow-[0_0_15px_0_rgba(0,0,0,0.1)] rounded-full flex justify-center items-center bg-white mx-auto'>{<IMAGES.securePaymentSvg />}</div>
+              <p className='text-grey text-xl uppercase mt-4'>SECURE PAYMENT</p>
+            </div>
+            <div className='text-center'>
+              <div className='w-40 h-40 shadow-[0_0_15px_0_rgba(0,0,0,0.1)] rounded-full flex justify-center items-center bg-white mx-auto'> {<IMAGES.easyReturnSvg />} </div>
+              <p className='text-grey text-xl uppercase mt-4'>EASY RETURN</p>
+            </div>
+            <div className='text-center'>
+              <div className='w-40 h-40 shadow-[0_0_15px_0_rgba(0,0,0,0.1)] rounded-full flex justify-center items-center bg-white mx-auto'> {<IMAGES.qualityAssuranceSvg />} </div>
+              <p className='text-grey text-xl uppercase mt-4'>EASY RETURN</p>
+            </div>
+          </div>
         </div>
         <div className='col-span-1'>
-          <p>Price</p>
+          <div className='bg-secondary text-white p-7 rounded-3xl'>
+            <h6 className='mb-8 text-2xl font-bold'>Price Summary</h6>
+            <p className='flex justify-between align-center text-xl mb-2'>
+              <span>Total MRP (Inc. all taxes)</span>
+              <span>&#8377; 6000</span>
+            </p>
+            <p className='flex justify-between align-center text-xl mb-2'>
+              <span>Sales Discount</span>
+              <span>- &#8377; 1200</span>
+            </p>
+            <p className='flex justify-between align-center text-xl mb-2'>
+              <span>Coupon Discount</span>
+              <span>- &#8377; 120</span>
+            </p>
+            <p className='flex justify-between align-center text-xl mb-3'>
+              <span>Delivery Charges</span>
+              <span>Free</span>
+            </p>
+            <p className='flex justify-between align-center text-xl border-t border-dashed pt-3'>
+              <span>Subtotal</span>
+              <span>&#8377; 4680</span>
+            </p>
+          </div>
+          <div className='bg-primary p-7 rounded-3xl mt-5 text-white flex justify-between items-center'>
+            <span> {<IMAGES.discountCelebrationSvg />} </span>
+            <p className='text-2xl ms-8'>Congratulations..!! You got ₹ 1420 off on this order</p>
+          </div>
+          <div className='p-7 rounded-3xl mt-5 border border-grey'>
+            <h6 className='mb-8 text-2xl font-bold text-secondary'>Coupons &amp; Offers</h6>
+            <p className='text-xl'>Appy Coupon Code</p>
+            <div className='flex justify-between items-center border border-grey rounded-xl w-full py-5 ps-5 pe-3 pl-1 mt-5'>
+              <input type="text" className="text-md placeholder:text-gray-400 focus:outline-none flex-1" placeholder="Enter Code"></input>
+              <Button useClass='text-sm text-secondary ms-2' buttonText='Apply' />
+            </div>
+          </div>
         </div>
       </div>
     </div>

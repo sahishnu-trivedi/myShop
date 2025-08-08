@@ -12,6 +12,7 @@ function ProductDetailPage() {
 
   const {slug} = useParams();
   const [allProducts, setAllProducts] = useState();
+  console.log('allProducts : ', allProducts);
 
   // Fetching All Products from Sanity
   useEffect(() => {
