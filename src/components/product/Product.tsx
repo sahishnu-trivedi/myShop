@@ -29,8 +29,8 @@ export default function Product({ title, bestSellingProduct }) {
 
       try {
         const result = await clients.fetch(query);
-        console.log('homepage query', query)
-        console.log('homepage result', allProducts)
+        // console.log('homepage query', query)
+        // console.log('homepage result', allProducts)
         setAllProducts(result);
       } catch (error) {
         console.error("Error fetching products:", error);

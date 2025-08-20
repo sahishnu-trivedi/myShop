@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import IMAGES from '@/assets/Images';
 import { Link, NavLink, useLocation, useMatch } from 'react-router-dom';
 import {useKindeAuth} from '@kinde-oss/kinde-auth-react';
+import { calculateTotalQty } from '@/features/CartProductSlice';
 
 import {
   DropdownMenu,
@@ -14,8 +15,9 @@ import {
 import { useSelector } from 'react-redux';
 
 export default function Header() {
-
-  const productTotalQuantity = useSelector((state) => state.allCart.quantity)
+  
+  const productTotalQuantity = useSelector((state) => state.allCart.totalQuantity)
+  console.log('productTotalQuantity : ', productTotalQuantity);
 
   const [scroll, setScroll] = useState(false);
   useEffect(() => {

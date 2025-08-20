@@ -1,6 +1,6 @@
 import IMAGES from '@/assets/Images';
 import Button from '@/components/button/Button';
-import { addToCart, removeFromCart } from '@/features/CartProductSlice';
+import { removeFromCart, incrementQuantity, calculateTotalQty } from '@/features/CartProductSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -16,31 +16,42 @@ import { PortableText } from '@portabletext/react';
 
 function Cart() {
   const cartProducts = useSelector((state) => state.allCart.cart)
+  let totalQuantity = useSelector((state) => state.allCart.totalQuantity)
   // const quantity = useSelector((state) => state.allCart.quantity)
   
   const dispatch = useDispatch()
   
   console.log('cartProducts : ', cartProducts);
 
-  const handleIncrementClick = (addProduct) => {
-    // dispatch(addToCart(cartProducts.slug.current, {quantity: addProduct} ));
-    dispatch(addToCart({...addProduct}));
-    
-    console.log('handleIncrementClick addProduct : ', addProduct)
+  const handleIncrementClick = (product, updatedQuantity) => {
+    console.log('handleIncrementClick updatedQuantity', updatedQuantity);
+    dispatch(incrementQuantity({product, quantity: updatedQuantity}));
   }
-  const handleDecrementClick = (removeProduct) => {
-    console.log('handleDecrementClick');
-    console.log('cartProducts slice : ', cartProducts);
-    dispatch(removeFromCart(cartProducts.slug.current, {quantity: removeProduct} ));
+  const handleRemoveProduct = (removeProduct) => {
+    console.log('removeProduct : ', removeProduct);
+    dispatch(removeFromCart(removeProduct));
   }
 
-  const totalPrice = () => {
-    return (
-      cartProducts.map((cartPrice) => console.log('totalPrice cartPrice : ', cartPrice))
-    )
+  const handleTotalQty = (totalqty) => {
+    console.log('totalqty : ', totalqty);
+    dispatch(calculateTotalQty(totalqty));
   }
 
-  console.log('totalPrice : ', totalPrice());
+  const quantityArray = [1, 2, 3, 4, 5, 6];
+
+  const calculatePrice = cartProducts.map((cartPrice) => cartPrice.actualprice * cartPrice.quantity).reduce((acc, curr) => acc + curr, 0);
+
+  const cartTotalQuantity =  cartProducts.map((cartTotalQty) => cartTotalQty.quantity).reduce((acc, curr) => acc + curr, 0)
+  handleTotalQty(cartTotalQuantity);
+  console.log('totalQuantity : ', handleTotalQty(cartTotalQuantity));
+
+  const calculateDiscountedPrice = cartProducts.map((cartDiscountedPrice) => cartDiscountedPrice.discountedprice * cartDiscountedPrice.quantity).reduce((acc, curr) => acc + curr, 0);
+
+  const couponDiscount = 120; // Assuming a fixed coupon discount for simplicity
+
+  const deliveryCharges = 0; // Assuming free delivery for simplicity
+
+  const totalPrice = calculatePrice - calculateDiscountedPrice - couponDiscount - deliveryCharges;
 
   return (
     <div className='container mx-auto pt-48'>
@@ -75,8 +86,8 @@ function Cart() {
                   <div className='flex-1 ms-7'>
                     <div className='flex justify-between items-cente mb-2'>
                       <h5 className='mb-0 text-black text-2xl font-bold'>{cartProduct.name}</h5>
-                      {/* <Button useClass='pinkBtn text-sm px-5 py-2' onClickHandler={handleDecrementClick} buttonText={<IMAGES.deleteSvg />}/> */}
-                      <a href='#' className='pinkBtn text-sm px-5 py-2' onClick={handleDecrementClick}>{<IMAGES.deleteSvg />}</a>
+                      {/* <Button useClass='pinkBtn text-sm px-5 py-2' onClickHandler={handleRemoveProduct} buttonText={<IMAGES.deleteSvg />}/> */}
+                      <a href='#' className='pinkBtn text-sm px-5 py-2' onClick={() => handleRemoveProduct(cartProduct)}>{<IMAGES.deleteSvg />}</a>
                     </div>
                     {/* <p className='text-sm mt-2'>Slim fit - long sleeve</p> */}
                     <div>
@@ -100,19 +111,22 @@ function Cart() {
                           </SelectGroup>
                         </SelectContent>
                       </Select>
-                      <Select onValueChange={handleIncrementClick}>
+                      <Select onValueChange={(value) => handleIncrementClick(cartProduct.slug.current, parseInt(value))}>
                         <SelectTrigger className="bg-primary text-white px-2 ms-3">
-                          <SelectValue placeholder="Qty: 1" />
+                          <SelectValue placeholder={`Qty: ${cartProduct.quantity}`} />
                         </SelectTrigger>
                         <SelectContent className='bg-white'>
                           <SelectGroup>
                             <SelectLabel>Qty: 1</SelectLabel>
-                            <SelectItem value="1">Qty: 1</SelectItem>
+                            {quantityArray.map((qty) => (
+                              <SelectItem key={qty} value={qty}>Qty: {qty}</SelectItem>
+                            ))}
+                            {/* <SelectItem value="1">Qty: 1</SelectItem>
                             <SelectItem value="2">Qty: 2</SelectItem>
                             <SelectItem value="3">Qty: 3</SelectItem>
                             <SelectItem value="4">Qty: 4</SelectItem>
                             <SelectItem value="5">Qty: 5</SelectItem>
-                            <SelectItem value="6">Qty: 6</SelectItem>
+                            <SelectItem value="6">Qty: 6</SelectItem> */}
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -150,23 +164,23 @@ function Cart() {
             <h6 className='mb-8 text-2xl font-bold'>Price Summary</h6>
             <p className='flex justify-between align-center text-xl mb-2'>
               <span>Total MRP (Inc. all taxes)</span>
-              <span>&#8377; 6000</span>
+              <span>&#8377; {calculatePrice}</span>
             </p>
             <p className='flex justify-between align-center text-xl mb-2'>
               <span>Sales Discount</span>
-              <span>- &#8377; 1200</span>
+              <span>- &#8377; {calculateDiscountedPrice}</span>
             </p>
             <p className='flex justify-between align-center text-xl mb-2'>
               <span>Coupon Discount</span>
-              <span>- &#8377; 120</span>
+              <span>- &#8377; {couponDiscount}</span>
             </p>
             <p className='flex justify-between align-center text-xl mb-3'>
               <span>Delivery Charges</span>
-              <span>Free</span>
+              <span>{deliveryCharges}</span>
             </p>
             <p className='flex justify-between align-center text-xl border-t border-dashed pt-3'>
               <span>Subtotal</span>
-              <span>&#8377; 4680</span>
+              <span>&#8377; {totalPrice}</span>
             </p>
           </div>
           <div className='bg-primary p-7 rounded-3xl mt-5 text-white flex justify-between items-center'>
